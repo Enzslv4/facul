@@ -1,0 +1,49 @@
+# Ignore system files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+*.DS_Store
+*.class
+
+# Ignore directories
+/.vscode/
+/node_modules/
+/bin/
+/obj/
+/out/
+/target/
+/.idea/
+/.vscode/
+/AppData/
+/Documents/
+/Downloads/
+/Favorites/
+/Links/
+/Music/
+/OneDrive/
+/Saved Games/
+/Searches/
+/Videos/
+/VirtualBox VMs/
+/logs/
+/venv/
+/Ambiente de Impressão/
+/Ambiente de Rede/
+/Configurações Locais/
+/Cookies/
+/Dados de Aplicativos/
+/Menu Iniciar/
+/Meus Documentos/
+/Modelos/
+/Recent/
+/SendTo/
+/Unidades de desenvolvimento/
+
+# Ignore specific files
+NTUSER.DAT
+NTUSER.DAT*
+ntuser.dat.LOG1
+ntuser.dat.LOG2
+ntuser.ini
