@@ -1,4 +1,4 @@
-package parte3;
+package roteiro2.parte3;
 
 import java.util.Scanner;
 
@@ -18,5 +18,7 @@ public class Programa04 {
 
             cont++;
         }
+        
+        entrada.close();
     }
 }

@@ -1,4 +1,4 @@
-package parte1;
+package roteiro2.parte1;
 
 import java.util.Scanner;
 

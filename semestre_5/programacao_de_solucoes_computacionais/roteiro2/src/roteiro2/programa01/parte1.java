@@ -1,4 +1,4 @@
-package programa01;
+package roteiro2.programa01;
 
 public class parte1 {
     public static void main(String[] args) {

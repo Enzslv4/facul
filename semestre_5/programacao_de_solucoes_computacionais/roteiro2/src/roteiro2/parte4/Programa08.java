@@ -1,4 +1,4 @@
-package parte4;
+package roteiro2.parte4;
 
 import java.util.Scanner;
 
@@ -15,5 +15,7 @@ public class Programa08 {
         }
 
         System.out.println(vetorNotas);
+
+        entrada.close();
     }
 }

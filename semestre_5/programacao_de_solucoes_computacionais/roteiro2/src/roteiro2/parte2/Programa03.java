@@ -1,4 +1,4 @@
-package parte2;
+package roteiro2.parte2;
 
 import javax.swing.JOptionPane;
 
