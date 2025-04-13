@@ -13,5 +13,7 @@ public class main {
         int sum = num1 + num2; // Adding the two numbers
 
         System.out.println("A soma de " + num1 + " e " + num2 + " é: " + sum); // Printing the result
+
+        scanner.close();
     }
 }
