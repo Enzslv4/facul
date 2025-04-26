@@ -1,12 +1,12 @@
 package roteiro4.parte1;
 
 public class Aluno {
-    private float matricula;
-    private String nome;
-    private String curso;
-    private int anoIngresso;
-    private int qtdeDisciplina;
-    private String situacao;
+    public float matricula;
+    public String nome;
+    public String curso;
+    public int anoIngresso;
+    public int qtdeDisciplina;
+    public String situacao;
 
     Aluno(float pMatricula, String pNome, String pCurso, int pAnoIngresso, int pQtdeDisciplina, String pSituacao){
         matricula = pMatricula;

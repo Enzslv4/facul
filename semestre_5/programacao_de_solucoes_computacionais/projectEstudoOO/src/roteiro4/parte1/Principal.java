@@ -3,6 +3,7 @@ package roteiro4.parte1;
 public class Principal {
     public static void main(String[] args) {
         Aluno aluno01 = new Aluno();
+        // Aluno aluno01 = new Aluno(111, "Jose", "Sistema de Informação", 2019, 4, "Aprovado");
         aluno01.matricula = 111;
         aluno01.nome = "Jose";
         aluno01.curso = "Sistema de Informação";
