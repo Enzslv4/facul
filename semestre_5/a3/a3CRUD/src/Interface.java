@@ -1,15 +1,14 @@
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 import java.util.ArrayList;
 
 public class Interface extends JFrame {
-    private ArrayList<Usuario> usuarios;
     private JTextArea areaTexto;
+    private UsuarioDAO usuarioDAO;
 
     public Interface() {
-        super("Gerenciador de Usuários");
-        usuarios = new ArrayList<>();
+        super("Gerenciador de Usuários (com DB)");
+        usuarioDAO = new UsuarioDAO();
         configurarInterface();
     }
 
@@ -19,13 +18,11 @@ public class Interface extends JFrame {
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
 
-        // Área de exibição
         areaTexto = new JTextArea();
         areaTexto.setEditable(false);
         JScrollPane scroll = new JScrollPane(areaTexto);
         add(scroll, BorderLayout.CENTER);
 
-        // Painel de botões
         JPanel botoesPanel = new JPanel(new GridLayout(1, 4, 10, 10));
 
         JButton btnCadastrar = new JButton("Cadastrar");
@@ -40,7 +37,6 @@ public class Interface extends JFrame {
 
         add(botoesPanel, BorderLayout.SOUTH);
 
-        // Ações
         btnCadastrar.addActionListener(e -> cadastrarUsuario());
         btnListar.addActionListener(e -> listarUsuarios());
         btnAtualizar.addActionListener(e -> atualizarUsuario());
@@ -57,67 +53,51 @@ public class Interface extends JFrame {
         String senha = JOptionPane.showInputDialog(this, "Senha:");
         if (senha == null || senha.isEmpty()) return;
 
-        Usuario novo = new Usuario(nome, email, senha);
-        usuarios.add(novo);
+        Usuario usuario = new Usuario(nome, email, senha);
+        usuarioDAO.adicionar(usuario);
         listarUsuarios();
-        JOptionPane.showMessageDialog(this, "Usuário cadastrado com sucesso!");
+        JOptionPane.showMessageDialog(this, "Usuário cadastrado!");
     }
 
     private void listarUsuarios() {
+        ArrayList<Usuario> lista = usuarioDAO.listar();
         areaTexto.setText("");
-        if (usuarios.isEmpty()) {
-            areaTexto.setText("Nenhum usuário cadastrado.");
+        if (lista.isEmpty()) {
+            areaTexto.setText("Nenhum usuário no banco.");
         } else {
-            for (Usuario u : usuarios) {
+            for (Usuario u : lista) {
                 areaTexto.append(u.toString() + "\n");
             }
         }
     }
 
     private void atualizarUsuario() {
-        String emailBusca = JOptionPane.showInputDialog(this, "Digite o email do usuário a ser atualizado:");
-        if (emailBusca == null || emailBusca.isEmpty()) return;
+        String email = JOptionPane.showInputDialog(this, "Email do usuário a atualizar:");
+        if (email == null || email.isEmpty()) return;
 
-        Usuario usuario = buscarUsuarioPorEmail(emailBusca);
+        Usuario usuario = usuarioDAO.buscarPorEmail(email);
         if (usuario == null) {
             JOptionPane.showMessageDialog(this, "Usuário não encontrado.");
             return;
         }
 
         String novoNome = JOptionPane.showInputDialog(this, "Novo nome:", usuario.getNome());
-        if (novoNome != null && !novoNome.isEmpty()) {
-            usuario.setNome(novoNome);
-        }
+        if (novoNome != null && !novoNome.isEmpty()) usuario.setNome(novoNome);
 
         String novaSenha = JOptionPane.showInputDialog(this, "Nova senha:");
-        if (novaSenha != null && !novaSenha.isEmpty()) {
-            usuario.setSenha(novaSenha);
-        }
+        if (novaSenha != null && !novaSenha.isEmpty()) usuario.setSenha(novaSenha);
 
+        usuarioDAO.atualizar(usuario);
         listarUsuarios();
-        JOptionPane.showMessageDialog(this, "Usuário atualizado.");
+        JOptionPane.showMessageDialog(this, "Usuário atualizado!");
     }
 
     private void deletarUsuario() {
-        String email = JOptionPane.showInputDialog(this, "Digite o email do usuário a ser deletado:");
+        String email = JOptionPane.showInputDialog(this, "Email do usuário a deletar:");
         if (email == null || email.isEmpty()) return;
 
-        Usuario usuario = buscarUsuarioPorEmail(email);
-        if (usuario != null) {
-            usuarios.remove(usuario);
-            listarUsuarios();
-            JOptionPane.showMessageDialog(this, "Usuário removido.");
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuário não encontrado.");
-        }
-    }
-
-    private Usuario buscarUsuarioPorEmail(String email) {
-        for (Usuario u : usuarios) {
-            if (u.getEmail().equalsIgnoreCase(email)) {
-                return u;
-            }
-        }
-        return null;
+        usuarioDAO.deletar(email);
+        listarUsuarios();
+        JOptionPane.showMessageDialog(this, "Usuário removido!");
     }
 }
