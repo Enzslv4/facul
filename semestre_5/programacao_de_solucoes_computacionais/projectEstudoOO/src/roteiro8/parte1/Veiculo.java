@@ -1,6 +1,6 @@
 package roteiro8.parte1;
 
-public class Veiculo {
+public abstract class Veiculo {
     private String placa;
     private int anoFabricacao;
     public Veiculo(String placa, int anoFabricacao) {
