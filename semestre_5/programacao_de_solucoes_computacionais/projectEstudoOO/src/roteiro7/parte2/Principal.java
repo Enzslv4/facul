@@ -1,8 +1,6 @@
 package roteiro7.parte2;
 import java.util.Scanner;
-
-import roteiro7.parte1.Aluno;
-
+import roteiro7.parte2.Aluno;
 import java.util.ArrayList;
 
 public class Principal {
@@ -25,7 +23,7 @@ public class Principal {
             System.out.println("Insira a quantidade de disciplinas: ");
             int qtdeDisciplina = entrada.nextInt();
         
-            Aluno auxAluno = new Aluno(matricula, nome, curso, anoIngresso, qtdeDisciplina, curso);
+            Aluno auxAluno = new Aluno(matricula, nome, curso, anoIngresso, qtdeDisciplina, "Matriculado");
             listaAlunos.add(auxAluno);
         }
         //Instanciando os objetos do tipo Aluno
