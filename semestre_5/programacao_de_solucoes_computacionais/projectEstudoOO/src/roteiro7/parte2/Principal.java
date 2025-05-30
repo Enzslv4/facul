@@ -1,6 +1,6 @@
 package roteiro7.parte2;
 import java.util.Scanner;
-import roteiro7.parte2.Aluno;
+// import roteiro7.parte2.Aluno;
 import java.util.ArrayList;
 
 public class Principal {
@@ -28,6 +28,7 @@ public class Principal {
         }
         //Instanciando os objetos do tipo Aluno
 
+        entrada.close();
         
         //Armazenando os objetos no vetor de alunos
 
