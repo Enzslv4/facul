@@ -23,9 +23,9 @@ int main() {
     }
 
     if (encontrado) {
-        cout << "O valor 1 foi encontrado na posição: (" << linha << ", " << coluna << ")" << endl;
+        std::cout << "O valor 1 foi encontrado na posição: (" << linha << ", " << coluna << ")" << std::endl;
     
     } else {
-        cout << "O valor 1 não foi encontrado na matriz" << endl;
+        std::cout << "O valor 1 não foi encontrado na matriz" << std::endl;
     }
 }
