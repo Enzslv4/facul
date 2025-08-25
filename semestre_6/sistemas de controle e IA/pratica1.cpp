@@ -1,8 +1,9 @@
 #include <iostream>
 #include <stdio.h>
+using namespace std;
 
 int main() {
-    std::cout << "Algoritmo de busca." << std::endl;
+    cout << "Algoritmo de busca." << endl;
 
     int matriz[3][3] = {{0, 0, 0}, {0, 1, 0}, {0, 0, 0}};
     int linha, coluna;
@@ -23,9 +24,9 @@ int main() {
     }
 
     if (encontrado) {
-        std::cout << "O valor 1 foi encontrado na posição: (" << linha << ", " << coluna << ")" << std::endl;
+        cout << "O valor 1 foi encontrado na posição: (" << linha << ", " << coluna << ")" << endl;
     
     } else {
-        std::cout << "O valor 1 não foi encontrado na matriz" << std::endl;
+        cout << "O valor 1 não foi encontrado na matriz" << endl;
     }
 }
